@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
+//  引入路由组件
 import router from './router'
-import store from './store'
 
-Vue.config.productionTip = false
+// 引入element-ui文件
+import './plugins/element'
 
+// 引入全局样式
+import './assets/css/grobal.less'
+
+//  引入axios配置文件
+import './untils/request'
 new Vue({
   router,
-  store,
   render: h => h(App)
 }).$mount('#app')
