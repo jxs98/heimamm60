@@ -155,6 +155,8 @@ export default {
         setToken(res.data.token)
         //  表单重置
         this.$refs.userLoginFormRef.resetFields()
+        //  跳转到后台
+        this.$router.push('/layout')
       })
     },
     //  注册按钮点击注册表单弹出
