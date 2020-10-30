@@ -141,7 +141,6 @@ export default {
     async getAllsubject () {
       const { data: res } = await this.$http.get('/subject/list', { params: this.subjectList })
       if (res.code === 200) {
-        console.log(res);
         this.total = res.data.pagination.total
         this.subject = res.data.items
       }

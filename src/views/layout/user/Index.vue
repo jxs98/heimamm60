@@ -82,7 +82,7 @@
               effect="dark"
               content="编辑用户"
               placement="top"
-              open-delay="1000"
+              :open-delay="1000"
             >
               <el-button
                 type="primary"
@@ -95,7 +95,7 @@
               effect="dark"
               content="删除用户"
               placement="top"
-              open-delay="1000"
+              :open-delay="1000"
             >
               <el-button
                 type="danger"

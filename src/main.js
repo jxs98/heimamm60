@@ -5,7 +5,8 @@ import router from './router'
 
 // 引入element-ui文件
 import './plugins/element'
-
+//  引入富文本编辑器
+import './plugins/edit'
 // 引入全局样式
 import './assets/css/grobal.less'
 

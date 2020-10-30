@@ -1,6 +1,6 @@
 <template>
   <div id="layout">
-    <el-container>
+    <el-container class="userindex">
       <!-- 顶部导航 -->
       <el-header class="header" style="height: 60px">
         <!-- 顶部左侧 -->
@@ -151,9 +151,12 @@ export default {
     }
   }
 }
-.el-container {
+.userindex {
   height: 100%;
   width: 100%;
+  .el-container {
+    height: 91%;
+  }
 }
 .el-main {
   background-color: #ccc;

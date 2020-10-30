@@ -4,7 +4,6 @@
       :title="model === 'add' ? '新增用户' : '编辑用户'"
       :visible.sync="dialogVisible"
       width="40%"
-      @open="opened"
       @close="closed"
     >
       <!-- //  中部主要内容区域 -->

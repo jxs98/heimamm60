@@ -105,6 +105,7 @@ export default {
                 return callback(new Error('手机号错误!'))
               } else {
                 callback()
+
               }
             }, trigger: 'blur'
           }
