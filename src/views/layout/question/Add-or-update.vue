@@ -3,7 +3,6 @@
     <el-dialog
       :title="model === 'add' ? '新增题目' : '编辑题目'"
       :visible.sync="dialogVisible"
-      @close="closed"
       fullscreen
       center
     >
@@ -289,9 +288,9 @@ export default {
       //  清空答案表单验证
       this.$refs.addupdateRef.clearValidate(['single_select_answer', 'multiple_select_answer', 'short_answer'])
     },
-    closed () {
-      this.$refs.uploadRef.videoUrl = ''
-    }
+    // closed () {
+    //   this.$refs.uploadRef.videoUrl = ''
+    // }
 
   },
 
@@ -300,7 +299,6 @@ export default {
 <style lang="less"  >
 .addorupdateform {
   margin: 0 auto;
-  // text-align: center;
   width: 50%;
   > .el-form-item {
     width: 60%;

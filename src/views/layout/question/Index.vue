@@ -296,6 +296,7 @@ export default {
         }
       })
       this.list = res.data.items
+      this.total = res.data.pagination.total
     },
     //  学科阶段格式化
     subjectAndStep (row) {

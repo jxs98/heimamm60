@@ -15,7 +15,8 @@
         </div>
         <!-- 顶部右侧 -->
         <div class="right">
-          <img :src="avatar" alt="" /><span class="name">{{ username }}</span
+          <img :src="avatar" alt="" /><span class="name"
+            >{{ username }}<strong>&nbsp;欢迎您!</strong></span
           ><el-button type="primary" @click="layout">退出 </el-button>
         </div>
       </el-header>
@@ -29,7 +30,19 @@
             router
             :collapse-transition="true"
           >
-            <el-menu-item index="/layout/chart">
+            <div
+              v-for="item in $router.options.routes[2].children"
+              :key="item.meta.fullPath"
+            >
+              <el-menu-item
+                :index="item.meta.fullPath"
+                v-if="item.meta.roles.includes(role)"
+              >
+                <i :class="item.meta.icon"></i>
+                <span slot="title">{{ item.meta.title }}</span>
+              </el-menu-item>
+            </div>
+            <!-- <el-menu-item index="/layout/chart">
               <i class="el-icon-pie-chart"></i>
               <span slot="title">数据预览</span>
             </el-menu-item>
@@ -48,9 +61,9 @@
             <el-menu-item index="/layout/subject">
               <i class="el-icon-notebook-2"></i>
               <span slot="title">学科列表</span>
-            </el-menu-item>
-          </el-menu></el-aside
-        >
+            </el-menu-item>-->
+          </el-menu>
+        </el-aside>
         <!-- 路由出口 -->
         <el-main><router-view></router-view></el-main>
       </el-container>
@@ -69,7 +82,8 @@ export default {
       //  用户名
       username: '',
       //  头像地址
-      avatar: ''
+      avatar: '',
+      role: ''
     }
 
   },
@@ -81,6 +95,17 @@ export default {
 
 
   },
+  watch: {
+    $route (newvalue) {
+      console.log(newvalue);
+      if (!newvalue.meta.roles.includes(this.role)) {
+        this.$message.error('你的级别不够无权访问!')
+        this.$router.push('/login')
+      }
+      //  设置激活的index
+      this.defaultActive = newvalue.path
+    }
+  },
   methods: {
     //  获取用户信息
     async getUserInfo () {
@@ -88,6 +113,9 @@ export default {
       //  进行赋值操作
       this.username = res.data.username
       this.avatar = process.env.VUE_APP_BASEURL + res.data.avatar
+      this.role = res.data.role
+      //  给仓库中的userInfo赋值
+      this.$store.commit('setUserInfo', res.data)
     },
     //  退出登录按钮点击事件
     layout () {

@@ -17,7 +17,12 @@
       :src="'http://127.0.0.1/heimamm/public/' + obj.image"
       class="avatar"
     />
-    <video v-else-if="videoUrl" :src="videoUrl" class="avatar" controls />
+    <video
+      v-else-if="obj.video"
+      :src="'http://127.0.0.1/heimamm/public/' + obj.video"
+      class="avatar"
+      controls
+    />
     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
   </el-upload>
 </template>
@@ -40,8 +45,8 @@ export default {
       uploadObj: {
         file: ''// 上传的额外参数
       },
-      imageUrl: '', //  图片地址
-      videoUrl: '', //  视频地址
+      // imageUrl: '', //  图片地址
+      // videoUrl: '', //  视频地址
     }
   },
   methods: {
@@ -84,7 +89,7 @@ export default {
         // 传递过来的模型赋值
         this.obj.image = res.data.url
       } else {
-        this.videoUrl = process.env.VUE_APP_BASEURL + res.data.url
+        // this.videoUrl = process.env.VUE_APP_BASEURL + res.data.url
         // 传递过来的模型赋值
         this.obj.video = res.data.url
       }
